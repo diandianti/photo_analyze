@@ -36,7 +36,7 @@ def align_face(img, lm: np.ndarray, output_size):
         output_size, inner_padding_factor, outer_padding, default_square)
     dst_img = warp_and_crop_face(img, lm, reference_pts=reference_5pts, crop_size=output_size)
 
-    cv2.imwrite('align.jpg', dst_img)
+    #cv2.imwrite('align.jpg', dst_img)
 
     return dst_img
 
