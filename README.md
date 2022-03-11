@@ -9,7 +9,7 @@
 - pip install -r requirements.txt
 - 使用命令来测试网络能否正常运行， python test_align.py many_face.png
 - 处理图像： python process.py cluster /path/to/photos
-- 如果想想要使用GPU推理，请安装onnxruntime-gpu 来代替 onnxruntime
+- 如果想要使用GPU推理，请安装onnxruntime-gpu 来代替 onnxruntime
 
 
 # 更改参数
