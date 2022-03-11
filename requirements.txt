@@ -1,0 +1,7 @@
+numpy
+opencv-python
+Pillow
+onnxruntime
+tqdm
+scikit-image
+fire
