@@ -132,6 +132,7 @@ class Fdlm():
         self.nms_threshold = nms_threshold
 
     def run(self, img, rgb_reverse=False):
+        # img in BGR
         img = self.preprocess(img, rgb_reverse)
         loc, conf, landms = self.onnx.run(None, {self.onnx.get_inputs()[0].name: img})
         return self.postprocess(loc, conf, landms)

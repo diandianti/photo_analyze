@@ -4,8 +4,23 @@ import pickle
 import hashlib
 import os
 
+import cv2
+import PIL.Image as Im
+import numpy as np
+import collections
+
 class FileTool():
     pass
+
+def img_open_cv(img_name):
+    # print("cv2 open")
+    img = cv2.imread(img_name, cv2.IMREAD_COLOR)
+    return img
+
+def img_open_pil(img_name):
+    img = Im.open(img_name)
+    img = np.array(img)
+    return img
 
 class CacheTool(FileTool):
 
@@ -58,6 +73,48 @@ class CacheTool(FileTool):
 #             return tmp
 #         else:
 #             return get_method()
+
+found_res = collections.namedtuple("FOUND_RES", ["id", "embs", "imgs"])
+class Res():
+    def __init__(self, outname: str, dst: str):
+        self.outname = outname
+        self.all_found = {}
+        self.dst = dst
+
+    def save(self, name=None):
+        w_name = self.outname
+        if name:
+            w_name = name
+        try:
+            with open(w_name, "w+") as f:
+                for id, v in self.all_found.items():
+                    for img in v.imgs:
+                        f.write("%d, %s\n" % (v.id, img))
+
+                    f.write("\n")
+        except Exception as e:
+            print("Save res file fail!")
+            print(e)
+
+    def copy_images(self, dst=None):
+        _d = self.dst
+        if dst:
+            _d = dst
+
+        import shutil
+        for id, v in self.all_found.items():
+
+            tar_dir = os.path.join(dst, str(v.id))
+            if not os.path.exists(tar_dir):
+                os.makedirs(tar_dir)
+
+            try:
+                for img in v.imgs:
+                    shutil.copy2(img, tar_dir)
+            except:
+                print("Copy file fail!")
+                continue
+
 
 def CLI_test():
 

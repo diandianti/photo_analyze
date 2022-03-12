@@ -181,6 +181,7 @@ class Fr(NNRun):
         self.input_size = (self.onnx.get_inputs()[0].shape[3], self.onnx.get_inputs()[0].shape[2])
 
     def run(self, orig_image, rgb_reverse=1):
+        # image RGB
         if isinstance(orig_image, str):
             orig_image = cv2.imread(orig_image)
 
