@@ -35,8 +35,8 @@ cluster = {
 - Fd与Fr网络我都是挑选的简单快速的网络，所以精度会差一点，后续会添加精度更高的网络，但是运行速度就不知道会如何了
 
 # 网络模型
-- FD：retinaface
-- Fr: Facenet
+- FD：retinaface (https://github.com/biubug6/Pytorch_Retinaface)
+- Fr: Facenet (https://github.com/yywbxgl/face_detection/tree/master/models)
 
 # 功能 & Todo
 - [x] 聚类分析
