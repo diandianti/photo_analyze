@@ -4,12 +4,50 @@
 
 
 # 使用方法
+## 下载并安装运行库
 - git clone https://github.com/diandianti/phpto.git
 - cd phpto
 - pip install -r requirements.txt
 - 使用命令来测试网络能否正常运行， python test_align.py many_face.png
-- 处理图像： python process.py cluster /path/to/photos
 - 如果想要使用GPU推理，请安装onnxruntime-gpu 来代替 onnxruntime
+
+## 使用
+### 聚类分析
+输入一个路径，这个目录下面包含了你要分类的图像，然后运行如下的命令。
+```bash
+python process.py cluster /path/to/photos \
+        --out res.txt #可选参数\
+        --do_copy=True #可选参数\
+        --dst /path/to/copy/photos #可选参数，如果制定了do_copy那么这个必须指定\
+        --log_level=1 #可选，默认为Error
+```
+### 比对分析
+输入两个路径，第一个是源路径，即分类那些图像，第二个是底库路径，即已经分类标注好的图像路径
+底库图像分布例子：
+```
+$ tree base
+base
+├── Junichiro
+│   ├── Junichiro_Koizumi_0001.jpg
+│   └── Junichiro_Koizumi_0012.jpg
+├── Igor
+│   ├── Igor_Ivanov_0001.jpg
+│   └── Igor_Ivanov_0011.jpg
+├── Ariel
+│   ├── Ariel_Sharon_0001.jpg
+│   └── Ariel_Sharon_0002.jpg
+└── Sophia
+    ├── Sophia_Loren_0001.jpg
+    └── Sophia_Loren_0002.jpg
+```
+
+命令如下
+```bash
+python process.py compare /path/to/photo \
+        /path/to/base \
+        --dst /path/to/copy #可选参数，选择将图像复制到哪里，默认为底库路径 \
+        --log_level=1 #可选，默认为Error
+```
 
 
 # 更改参数
