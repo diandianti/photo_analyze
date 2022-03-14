@@ -5,7 +5,7 @@
 
 # 使用方法
 ## 下载并安装运行库
-- git clone https://github.com/diandianti/phpto.git
+- git clone https://github.com/diandianti/photo_analyze.git
 - cd phpto
 - pip install -r requirements.txt
 - 使用命令来测试网络能否正常运行， python test_align.py many_face.png
